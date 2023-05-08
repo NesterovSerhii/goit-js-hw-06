@@ -17,7 +17,6 @@ const galleryListRef = document.querySelector(".gallery");
 galleryListRef.style.display = 'flex';
 galleryListRef.style.gap = '24px';
 
-images.forEach(img => {
-  const galleryItem = `<li style="list-style: none"><img src="${img.url}" alt="${img.alt}"  height = 400px width = 700px></li>`;
-  galleryListRef.insertAdjacentHTML('beforeend', galleryItem);
-});
+const galleryItems = images.map(img => `<li style="list-style: none"><img src="${img.url}" alt="${img.alt}"  height = 400px width = 700px></li>`).join('');
+
+  galleryListRef.insertAdjacentHTML('beforeend', galleryItems);

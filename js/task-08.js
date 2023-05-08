@@ -7,29 +7,35 @@ formEl.addEventListener('submit', onFormSubmit);
 
 function onFormSubmit(event) {
     event.preventDefault(); 
-    checkEmail();
-    checkPassword();
+    const emailError = checkEmail();
+    const passError = checkPassword();
+
+    if (emailError || passError) {
+        alert (emailError || passError);
+        return;
+    }
+
     const formElements = event.currentTarget.elements;
     const email = formElements.email.value;
     const password = formElements.password.value
-
+    
     const userData = {
         email,
         password,
     };
-    console.log(userData);
     event.currentTarget.reset();
+    console.log(userData);
     return userData;
 };
 
 function checkEmail() {
     if (emailInputEl.value === '') {
-        return alert("Введите Email");
+        return "Введите Email";
     }
 };
 
 function checkPassword() {
     if (passInputEl.value === '') {
-        return alert("Введите пароль");
+        return "Введите пароль";
     }
 };
